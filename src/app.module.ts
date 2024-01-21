@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/entities/user.entity';
+import { MoviesModule } from './movies/movies.module';
+import { Movie } from './movies/entities/movie.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -13,10 +15,11 @@ import { User } from './users/entities/user.entity';
     username: 'root',
     password: 'root',
     database: 'nest_movies', // Nombre de la base de datos como se creo en sql
-    entities: [User], // Las entidades que creamos (por ejemplo la tabla usuarios es la entidad users)
+    entities: [User,Movie], // Las entidades que creamos (por ejemplo la tabla usuarios es la entidad users)
     synchronize: true,
   }),
-  UsersModule
+  UsersModule,
+  MoviesModule
 ],
   controllers: [AppController],
   providers: [AppService],
